@@ -31,13 +31,11 @@ builder.Services.AddResponseCompression(opts =>
 
 var app = builder.Build();
 
+// SUBSTITUA o bloco using atual por:
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    if (!db.Database.GetAppliedMigrations().Any())
-        db.Database.EnsureCreated();
-    else
-        db.Database.Migrate();
+    db.Database.Migrate();
 }
 
 app.UseResponseCompression();
