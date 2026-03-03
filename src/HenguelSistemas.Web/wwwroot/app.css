@@ -1,0 +1,23 @@
+/* Henguel Sistemas — Global Reset */
+/* Os estilos principais ficam dentro do Home.razor via <style> scoped */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Remove default Blazor styles */
+#blazor-error-ui {
+    display: none;
+}

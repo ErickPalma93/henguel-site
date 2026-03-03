@@ -1,0 +1,4 @@
+# Enforce HTTPS and non-www canonical
+http://henguel.com.br/*        https://henguel.com.br/:splat   301!
+http://www.henguel.com.br/*    https://henguel.com.br/:splat   301!
+https://www.henguel.com.br/*   https://henguel.com.br/:splat   301!
