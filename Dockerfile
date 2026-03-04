@@ -1,4 +1,3 @@
-Set-Content -Path "Dockerfile" -Value @"
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /app
 COPY . .
@@ -11,4 +10,3 @@ COPY --from=build /app/out .
 ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
 ENTRYPOINT ["dotnet", "HenguelSistemas.Web.dll"]
-"@
