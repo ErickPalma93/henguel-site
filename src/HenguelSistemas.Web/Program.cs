@@ -21,7 +21,7 @@ var connectionString = builder.Configuration.GetConnectionString("Default")
     ?? "Server=localhost;Port=3306;Database=henguel;User ID=root;Password=;";
 
 builder.Services.AddDbContext<AppDbContext>(opt =>
-    opt.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+    opt.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 0))));
 
 builder.Services.AddScoped<IWaitlistService, WaitlistService>();
 builder.Services.AddScoped<VisitTrackingService>();
@@ -29,9 +29,11 @@ builder.Services.AddScoped<VisitTrackingService>();
 builder.Services.AddResponseCompression(opts =>
     opts.EnableForHttps = true);
 
+builder.WebHost.UseUrls("http://0.0.0.0:8080");
+
 var app = builder.Build();
 
-// SUBSTITUA o bloco using atual por:
+
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
